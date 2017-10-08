@@ -20,7 +20,7 @@
                         <i class="fa fa-user" aria-hidden="true"></i> User Management <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ route('user.signup') }}">Signup</a></li>
-                        <li role="separator" class="divider">Signin</li>
+                        <li><a href="{{ route('user.signin') }}">Signin</a></li>
                         <li><a href="#">Logout</a></li>
                     </ul>
                 </li>
