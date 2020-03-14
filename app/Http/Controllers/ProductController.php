@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
-    public function getIndex(){
+    public function getIndex()
+    {
         $products = Product::all();
-        return view( 'shop.index',[ 'products' => $products ] );
+        return view('shop.index', ['products' => $products]);
     }
 
     public function getAddToCart(Request $request, $id)
