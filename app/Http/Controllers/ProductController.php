@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
-    public function getIndex(){
+    public function getIndex()
+    {
         $products = Product::all();
-        return view( 'shop.index',[ 'products' => $products ] );
+        return view('shop.index', ['products' => $products]);
     }
 
     public function getAddToCart(Request $request, $id)
@@ -21,7 +22,19 @@ class ProductController extends Controller
         $cart = new Cart($oldCart);
         $cart->add($product, $product->id);
         $request->session()->put('cart', $cart);
-        
+
         return redirect()->route('product.index');
+    }
+
+    public function getCart()
+    {
+        if (!Session::has('cart')) {
+            return view('shop.shopping-cart');
+        }
+
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+
+        return view('shop.shopping-cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
 }
