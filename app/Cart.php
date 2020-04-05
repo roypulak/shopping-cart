@@ -36,4 +36,11 @@ class Cart
         }
         return ['qty' => 0, 'price' => $item->price, 'item' => $item];
     }
+
+    public function reduceByOne($id) {
+        $this->items[$id]['qty']--;
+        $this->items[$id]['price'] -= $this->items[$id]['item']['price'];
+        $this->totalQty--;
+        $this->totalPrice -= $this->items[$id]['item']['price'];
+    }
 }
