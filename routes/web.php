@@ -28,6 +28,11 @@ Route::get('/reduce/{id}', [
     'as' => 'product.reduceByOne'
 ]);
 
+Route::get('/remove/{id}', [
+    'uses' => 'ProductController@getRemoveItem',
+    'as' => 'product.remove'
+]);
+
 Route::get('/shopping-cart', [
     'uses' => 'ProductController@getCart',
     'as' => 'product.shoppingCart'

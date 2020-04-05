@@ -40,6 +40,16 @@ class ProductController extends Controller
         return redirect()->route('product.shoppingCart');
     }
 
+    public function getRemoveItem($id) {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->reduceByOne($id);
+
+        Session::put('cart', $cart);
+
+        return redirect()->route('product.shoppingCart');
+    }
+
     public function getCart()
     {
         if (!Session::has('cart')) {
